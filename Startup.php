@@ -44,8 +44,13 @@ class Startup extends AngelList
      */
     public function batch($ids = array())
     {
-        $url = $this->endpointUrl . '/' . $this->name . '/batch?ids=' . implode(',', $ids);
-        return $this->getResponse($url);
+
+
+    echo "This is a check";
+
+    
+       // $url = $this->endpointUrl . '/' . $this->name . '/batch?ids=' . implode(',', $ids);
+        //return $this->getResponse($url);
     }
 
     /**
