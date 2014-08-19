@@ -1,13 +1,34 @@
 <?php
-   
-    echo "This is a test of the AngelList Api <br./>";
+include_once './_core/class.Core.php';
+include_once './controllers/controllers.php';
 
-    require_once 'AngelList/Startup.php';
-   
-    $Startup = new Startup();
-    $startups = $Startup->batch(array(
-        19178, // Friendorse
-        29937, // Wooboard
-        67577  // Coachy
-    ));
-    print_r($startups);
+Class RouteEngine extends Core {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->_CLASS("Index");
+    }
+
+    public function dispatch($requestURI) {
+        $requestURI=  explode("?", $requestURI)[0];
+        switch ($requestURI) {
+
+            case "/":    
+                $this->load->_CLASS("Index");
+                $this->index->retrieve();
+                break;
+            
+        }
+    }
+
+}
+
+$routeEngine = new RouteEngine();
+$routeEngine->dispatch($_SERVER["REQUEST_URI"]);
+
+
+
+
+
+
+
